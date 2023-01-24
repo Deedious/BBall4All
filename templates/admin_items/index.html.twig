@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Items index{% endblock %}
+
+{% block body %}
+    <h1 class="text-light">Items index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-light">Id</th>
+                <th class="text-light">Title</th>
+                <th class="text-light">Description</th>
+                <th class="text-light">Price</th>
+                <th class="text-light">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td class="text-light">{{ item.id }}</td>
+                <td class="text-light">{{ item.title }}</td>
+                <td class="text-light">{{ item.description }}</td>
+                <td class="text-light">{{ item.price }}</td>
+                <td>
+                    <a href="{{ path('app_admin_items_show', {'id': item.id}) }}">show</a>
+                    <a href="{{ path('app_admin_items_edit', {'id': item.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td  class="text-light" colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_items_new') }}">Create new</a>
+{% endblock %}

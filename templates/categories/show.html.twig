@@ -3,20 +3,24 @@
 {% block title %}Categories{% endblock %}
 
 {% block body %}
-    <h1>Categories</h1>
+    <h1 class="text-light">Categories</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
+                <th class="text-light">Id</th>
+                <td class="text-light">{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th class="text-light">Title</th>
+                <td class="text-light">{{ category.title }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_categories_index') }}">back to list</a>
+    <a href="{{ path('app_categories_index') }}">Back to list</a>
 
-    <a href="{{ path('app_categories_edit', {'id': category.id}) }}">edit</a>
+    {# <a href="{{ path('app_categories_edit', {'id': category.id}) }}">Edit</a> #}
 
-    {{ include('categories/_delete_form.html.twig') }}
+    {# {{ include('categories/_delete_form.html.twig') }} #}
 {% endblock %}

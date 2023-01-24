@@ -3,37 +3,37 @@
 {% block title %}Items index{% endblock %}
 
 {% block body %}
-    <h1>Items index</h1>
+    <h1 class="text-light">Items index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>actions</th>
+                <th class="text-light">Id</th>
+                <th class="text-light">Title</th>
+                <th class="text-light">Description</th>
+                <th class="text-light">Price</th>
+                <th class="text-light">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for item in items %}
             <tr>
-                <td>{{ item.id }}</td>
-                <td>{{ item.title }}</td>
-                <td>{{ item.description }}</td>
-                <td>{{ item.price }}</td>
-                <td>
-                    <a href="{{ path('app_items_show', {'id': item.id}) }}">show</a>
-                    <a href="{{ path('app_items_edit', {'id': item.id}) }}">edit</a>
+                <td class="text-light">{{ item.id }}</td>
+                <td class="text-light">{{ item.title }}  <img src="{{ asset('upload/'  ~ item.imageName  ) }}"></td>
+                <td class="text-light">{{ item.description }}</td>
+                <td class="text-light">{{ item.price }}</td>
+                <td class="text-light">
+                    <a href="{{ path('app_items_show', {'id': item.id}) }}">Show</a>
+                    {# <a href="{{ path('app_items_edit', {'id': item.id}) }}">edit</a> #}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td class="text-light" colspan="5">No Records Found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_items_new') }}">Create new</a>
+    {# <a href="{{ path('app_items_new') }}">Create new</a> #}
 {% endblock %}

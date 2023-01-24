@@ -21,24 +21,7 @@ class ItemsController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_items_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ItemsRepository $itemsRepository): Response
-    {
-        $item = new Items();
-        $form = $this->createForm(ItemsType::class, $item);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $itemsRepository->save($item, true);
-
-            return $this->redirectToRoute('app_items_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('items/new.html.twig', [
-            'item' => $item,
-            'form' => $form,
-        ]);
-    }
+    
 
     #[Route('/{id}', name: 'app_items_show', methods: ['GET'])]
     public function show(Items $item): Response
@@ -48,31 +31,5 @@ class ItemsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_items_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Items $item, ItemsRepository $itemsRepository): Response
-    {
-        $form = $this->createForm(ItemsType::class, $item);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $itemsRepository->save($item, true);
-
-            return $this->redirectToRoute('app_items_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('items/edit.html.twig', [
-            'item' => $item,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_items_delete', methods: ['POST'])]
-    public function delete(Request $request, Items $item, ItemsRepository $itemsRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$item->getId(), $request->request->get('_token'))) {
-            $itemsRepository->remove($item, true);
-        }
-
-        return $this->redirectToRoute('app_items_index', [], Response::HTTP_SEE_OTHER);
-    }
+    
 }

@@ -3,31 +3,33 @@
 {% block title %}Categories index{% endblock %}
 
 {% block body %}
-    <h1>Categories index</h1>
+    <h1 class="text-light">Categories index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>actions</th>
+                <th class="text-light">Id</th>
+                <th class="text-light">Title</th>
+                <th class="text-light">actions</th>
             </tr>
         </thead>
         <tbody>
         {% for category in categories %}
             <tr>
-                <td>{{ category.id }}</td>
+                <td class="text-light">{{ category.id }}</td>
+                <td class="text-light">{{ category.title }}</td>
                 <td>
                     <a href="{{ path('app_categories_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_categories_edit', {'id': category.id}) }}">edit</a>
+                    {# <a href="{{ path('app_categories_edit', {'id': category.id}) }}">edit</a> #}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="2">no records found</td>
+                <td class="text-light" colspan="3">No Records Found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_categories_new') }}">Create new</a>
+    {# <a href="{{ path('app_categories_new') }}">Create new</a> #}
 {% endblock %}

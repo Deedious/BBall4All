@@ -3,9 +3,9 @@
 {% block title %}New Categories{% endblock %}
 
 {% block body %}
-    <h1>Create new Categories</h1>
+    <h1 class="text-light">New Category</h1>
 
     {{ include('categories/_form.html.twig') }}
 
-    <a href="{{ path('app_categories_index') }}">back to list</a>
+    <a href="{{ path('app_categories_index') }}">Back to list</a>
 {% endblock %}

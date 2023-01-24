@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -29,6 +31,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Items::class)]
+    private Collection $Items;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: SubCategories::class)]
+    private Collection $SubCategories;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Categories::class)]
+    private Collection $Categories;
+
+    public function __construct()
+    {
+        $this->Items = new ArrayCollection();
+        $this->SubCategories = new ArrayCollection();
+        $this->Categories = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->email;
+    }
+
+    
 
     public function getId(): ?int
     {
@@ -117,5 +142,95 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Items>
+     */
+    public function getItems(): Collection
+    {
+        return $this->Items;
+    }
+
+    public function addItem(Items $item): self
+    {
+        if (!$this->Items->contains($item)) {
+            $this->Items->add($item);
+            $item->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItem(Items $item): self
+    {
+        if ($this->Items->removeElement($item)) {
+            // set the owning side to null (unless already changed)
+            if ($item->getUser() === $this) {
+                $item->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SubCategories>
+     */
+    public function getSubCategories(): Collection
+    {
+        return $this->SubCategories;
+    }
+
+    public function addSubCategory(SubCategories $subCategory): self
+    {
+        if (!$this->SubCategories->contains($subCategory)) {
+            $this->SubCategories->add($subCategory);
+            $subCategory->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubCategory(SubCategories $subCategory): self
+    {
+        if ($this->SubCategories->removeElement($subCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($subCategory->getUser() === $this) {
+                $subCategory->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Categories>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->Categories;
+    }
+
+    public function addCategory(Categories $category): self
+    {
+        if (!$this->Categories->contains($category)) {
+            $this->Categories->add($category);
+            $category->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categories $category): self
+    {
+        if ($this->Categories->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getUser() === $this) {
+                $category->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -3,20 +3,20 @@
 {% block title %}SubCategories{% endblock %}
 
 {% block body %}
-    <h1>SubCategories</h1>
+    <h1 class="text-light">SubCategories</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ sub_category.id }}</td>
+                <th class="text-light">Id</th>
+                <td class="text-light">{{ sub_category.id }}</td>
             </tr>
         </tbody>
     </table>
 
     <a href="{{ path('app_sub_categories_index') }}">back to list</a>
 
-    <a href="{{ path('app_sub_categories_edit', {'id': sub_category.id}) }}">edit</a>
+    {# <a href="{{ path('app_sub_categories_edit', {'id': sub_category.id}) }}">edit</a> #}
 
-    {{ include('sub_categories/_delete_form.html.twig') }}
+    {# {{ include('sub_categories/_delete_form.html.twig') }} #}
 {% endblock %}

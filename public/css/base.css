@@ -1,0 +1,149 @@
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://images.unsplash.com/photo-1560553814-060afcd8904a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+
+}
+
+
+header {
+    width: 100%;
+    height: 150px;
+    color: #F27438 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#imgh1{
+    height: 70px !important;
+    width: 70px !important;
+    margin-right: 50px;
+    
+}
+
+#imgh2{
+    height: 70px !important;
+    width: 70px !important;
+    margin-left: 50px;
+    
+}
+
+#title {
+    color: #F27438 !important;
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.navbar{
+    background-color: #F27438 !important;
+    height: 60px;
+    font-size: 25px;
+}
+
+
+
+#navbarSupportedContent{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.btn {
+    font-size: 24px !important;
+    margin-top: 1px !important;
+    font-weight: 500 !important;
+    color:white !important;
+    
+}
+
+.btn:active {
+border: 0px !important;
+}
+
+#carousel_auto{
+    height: 370px !important;
+    width: 60%  !important;
+    margin-left: 250px !important;
+    border-radius: 25px !important;
+    margin-top: 50px;
+}
+
+
+img{
+    height: 370px !important;
+    width: 100%  !important;
+    border-radius: 25px;
+}
+
+#s{
+    height: 60px !important;
+    width: auto !important;
+    margin-right: 1300px;
+    border-radius: 50%;
+    background-color: #F27438;
+    
+}
+
+
+.ftr {
+    list-style-type: none;
+    margin-top: 40px !important;
+    
+    
+}
+
+.ftr li a {
+    color:  #F27438 !important;
+    margin: 0;
+}
+
+.ftr li a:hover{
+    color:  #F27438 !important;
+    
+}
+
+#inputEmail:focus, #inputPassword:active {
+    box-shadow: 2px #F27438 !important;
+}
+
+#btnsign{
+    background-color: #F27438 !important;
+    border: #F27438;
+}
+
+.reduc{
+    margin-right: 900px !important;
+}
+
+.form-label {
+    color: white !important;
+}
+
+#btn_dropdown, #btn_dropdown2 {
+    justify-content: end;
+    flex-direction: column;
+    color: black !important;
+}
+
+.container{
+    color: white !important;
+}
+.table{
+    color: white!important;
+}
+
+    
+    
+
+
+    
+
+    
+  
+    
