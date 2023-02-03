@@ -5,10 +5,10 @@
 {% block body %}
     <h1 class="text-light">Items index</h1>
 
-    <table class="table">
+    <table class="table table-bordered w-75 mx-auto">
         <thead>
             <tr>
-                <th class="text-light">Id</th>
+                <th class="text-light">#</th>
                 <th class="text-light">Title</th>
                 <th class="text-light">Description</th>
                 <th class="text-light">Price</th>
@@ -19,7 +19,7 @@
         {% for item in items %}
             <tr>
                 <td class="text-light">{{ item.id }}</td>
-                <td class="text-light">{{ item.title }}  <img src="{{ asset('upload/'  ~ item.imageName  ) }}"></td>
+                <td class="text-light">{{ item.title }}  <img id="imgItem" src="{{ asset('upload/'  ~ item.imageName  ) }}"></td>
                 <td class="text-light">{{ item.description }}</td>
                 <td class="text-light">{{ item.price }}</td>
                 <td class="text-light">

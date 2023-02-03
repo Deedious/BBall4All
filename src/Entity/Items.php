@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ItemsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,7 +22,7 @@ class Items
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 2)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 2,nullable: true)]
     private ?string $price = null;
 
     #[ORM\ManyToOne(inversedBy: 'items')]
@@ -33,6 +35,14 @@ class Items
 
     #[ORM\Column(length: 255)]
     private ?string $imageName = null;
+
+    #[ORM\OneToMany(mappedBy: 'Items', targetEntity: Comments::class)]
+    private Collection $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -112,6 +122,36 @@ class Items
     public function setImageName(string $imageName): self
     {
         $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comments>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+            $comment->setItems($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getItems() === $this) {
+                $comment->setItems(null);
+            }
+        }
 
         return $this;
     }

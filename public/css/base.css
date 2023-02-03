@@ -20,15 +20,15 @@ header {
 }
 
 #imgh1{
-    height: 70px !important;
-    width: 70px !important;
+    height: 100px !important;
+    width: 100px !important;
     margin-right: 50px;
     
 }
 
 #imgh2{
-    height: 70px !important;
-    width: 70px !important;
+    height: 100px !important;
+    width: 100px !important;
     margin-left: 50px;
     
 }
@@ -84,7 +84,7 @@ img{
 #s{
     height: 60px !important;
     width: auto !important;
-    margin-right: 1300px;
+    margin-right: 975px !important;
     border-radius: 50%;
     background-color: #F27438;
     
@@ -117,18 +117,36 @@ img{
     border: #F27438;
 }
 
-.reduc{
-    margin-right: 900px !important;
+#reduc{
+    margin-right: 650px;
+}
+
+#reduc1{
+    margin-right: 400px;
 }
 
 .form-label {
     color: white !important;
 }
 
-#btn_dropdown, #btn_dropdown2 {
+#btn_dropdown{
+    display: inline;
+    align-items: center;
     justify-content: end;
     flex-direction: column;
     color: black !important;
+    border: #F27438;
+    margin-top: 20px !important;
+}
+
+#btn_dropdown2{
+    display: inline;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+    color: black !important;
+    border: #F27438;
+    margin-top: auto !important;
 }
 
 .container{
@@ -136,6 +154,16 @@ img{
 }
 .table{
     color: white!important;
+}
+
+h1, h2, h3, h4 {
+    color: #F27438;
+}
+
+#imgItem{
+    height: 80px !important;
+    width: 80px !important;
+    
 }
 
     

@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Categories;
 use App\Form\Categories2Type;
 use App\Repository\CategoriesRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\SubCategoriesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/categories')]
 class AdminCategoriesController extends AbstractController
@@ -41,10 +42,17 @@ class AdminCategoriesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_admin_categories_show', methods: ['GET'])]
-    public function show(Categories $category): Response
+    public function show(Categories $category,SubCategoriesRepository $subCategoriesRepository): Response
     {
+
+        
+             
+             $subCategory=$subCategoriesRepository->findBy(['Categories' => $category->getId()]);
+             
+            //  dd($subCategory);
         return $this->render('admin_categories/show.html.twig', [
             'category' => $category,
+            'subCategories' => $subCategory,
         ]);
     }
 

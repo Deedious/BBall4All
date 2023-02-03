@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DisplayitemsController!{% endblock %}
+
+{% block body %}
+ 
+<h1>Display Category's Items :</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Topic</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+ {% for items in data_items_sub_cat %}
+            <tr>
+                <td>{{ items.id }}</td>
+                <td>{{ items.title }}</td>
+                <td>{{ items.description }}</td> 
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No Records Found</td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+{% endblock %}
